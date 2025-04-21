@@ -148,7 +148,7 @@ def load_checkpoint(checkpoint, model, optimizer=None):
         optimizer: (torch.optim) optional: resume optimizer from checkpoint
     """
     if not os.path.exists(checkpoint):
-        raise("File doesn't exist {}".format(checkpoint))
+        raise RuntimeError("File doesn't exist: {}".format(checkpoint))
     if torch.cuda.is_available():
         checkpoint = torch.load(checkpoint)
     else:
