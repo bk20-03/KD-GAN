@@ -15,6 +15,7 @@ from collections import OrderedDict
 import tensorflow as tf
 import numpy as np
 import scipy.misc 
+import os
 try:
     from StringIO import StringIO  # Python 2.7
 except ImportError:
@@ -148,7 +149,6 @@ def load_checkpoint(checkpoint, model, optimizer=None):
         optimizer: (torch.optim) optional: resume optimizer from checkpoint
     """
     if not os.path.exists(checkpoint):
-        import os
         def load_checkpoint(checkpoint, model):
             if not os.path.isfile(checkpoint):
                 print("[INFO] Checkpoint file not found: {} — Skipping load.".format(checkpoint))
