@@ -158,7 +158,7 @@ def load_checkpoint(checkpoint, model, optimizer=None):
             model.load_state_dict(checkpoint_data['state_dict'])
 
     if torch.cuda.is_available():
-        checkpoint = torch.load(checkpoint)
+        checkpoint = torch.load(checkpoint,weights_only=False)
     else:
         # this helps avoid errors when loading single-GPU-trained weights onto CPU-model
         checkpoint = torch.load(checkpoint, map_location=lambda storage, loc: storage)
